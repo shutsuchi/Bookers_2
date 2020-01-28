@@ -1,2 +1,29 @@
-<h1>Book#edit</h1>
-<p>Find me in app/views/books/edit.html.erb</p>
+<div class="container">
+	<div class="row">
+      <h2>Editing Book</h2>
+      <p></p>
+      <%= form_for(@book) do |f| %>
+          <div class="form-group has-icon row">
+              <label class="field col-xs-12">Title</label><br />
+              <%= f.text_field :title, placeholder:"タイトル", class:"col-xs-12"%>
+          </div>
+
+          <div class="form-group has-icon row">
+              <label class="field col-xs-12">Opinion</label><br />
+              <%= f.text_area :body, class:"col-xs-12" %>
+          </div>
+
+          <div class="row">
+          <%= f.submit "Update Book", class:"btn btn-primary col-xs-12"  %>
+          </div>
+      <% end %>
+      <div>
+      	<div class="row book-edit-select">
+					<div>
+		      	<%=link_to 'Show', user_path(current_user) %><span> | </span>
+		      	<%=link_to 'Back', books_path %>
+		      </div>
+				</div>
+    </div>
+  </div>
+</div>
