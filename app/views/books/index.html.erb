@@ -23,6 +23,6 @@
 								<td class="books-index"><%= book.body %></td>
 							</tr>
 							<% end %>
-							<!-- < end %> -->
+							<%= paginate @books, class:"paginate"  %>
 						</table>
 					</div>
