@@ -1,0 +1,24 @@
+<body>
+	<div class="container">
+		<div class="row">
+			<%= render 'users/common', user: current_user, book: @book %>
+			<div class="col-xs-9">
+				<h2>Book detail</h2>
+				<div>
+					<table>
+						<tbody>
+							<tr>
+								<td class="book-index"><%= attachment_image_tag @user, :profile_image, fallback: "img/no_image.png", class:"field", size: "40x40" %><br /><%= @book.user.name %></td>
+								<td class="book-index"><%= @book.title %></td>
+								<td class="book-index"><%= @book.body %></td>
+								<td class="book-index"><%= link_to "Edit", edit_book_path(@book.id), class:" btn-sm btn-success" %></td>
+								<td class="book-index"><%= link_to "Destroy", books_path, method: :delete, class:"btn-sm btn-danger" %></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+

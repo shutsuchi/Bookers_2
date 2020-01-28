@@ -1,0 +1,150 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+
+/*--------------- Common ---------------*/
+* {
+	box-sizing: border-box
+}
+
+header .navbar-left span {
+	font-size: 20px;
+	padding-top: 10px;
+}
+
+div {
+	display: block;
+}
+
+.nav {
+	list-style: none;
+}
+
+.nav>span {
+	color: white;
+}
+
+.navbar-inverse {
+	background-color: #222;
+	boder-color: #090909;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+	color: #9d9d9d;
+}
+
+.navbar-nav>li>a {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	line-height: 20px;
+}
+
+
+/*---------- Session ---------------*/
+.field {
+	margin: 2px auto;
+}
+.actions {
+	margin-bottom: 10px;
+}
+
+/*---------- User_Common ---------------*/
+
+.col-xs-3 th {
+	padding: 8px;
+	border-top: 1px solid #dddddd;
+}
+
+/*---------- User_Show ---------------*/
+
+.col-xs-9 th {
+	padding: 8px;
+	border-bottom: 1px solid #dddddd;
+}
+
+.col-xs-9 td {
+	border-bottom: 1px solid #dddddd;
+}
+
+td {
+	margin: 33px;
+	padding: 8px;
+	height: 60px;
+	vertical-align: top;
+}
+
+.user-index:nth-child(1) {
+	width: 160px;
+}
+.user-index:nth-child(2) {
+	width: 130px;
+}
+.user-index:nth-child(3) {
+	width: 190px;
+}
+
+.window {
+	margin-bottom: 10px;
+}
+.pic {
+	margin: 3px auto;
+	padding: 3px;
+}
+
+/*---------- User_Index ---------------*/
+.users-index:nth-child(1) {
+	width: 200px;
+}
+.users-index:nth-child(2) {
+	width: 220px;
+}
+.users-index:nth-child(3) {
+	width: 95px;
+}
+
+
+/*---------- Book_Index ---------------*/
+.books-index:nth-child(1) {
+	width: 65px;
+}
+.books-index:nth-child(2) {
+	width: 300px;
+}
+.books-index:nth-child(3) {
+	width: 310px;
+}
+
+/*---------- Book_Show ---------------*/
+.book-index:nth-child(1) {
+	width: 100px;
+}
+.book-index:nth-child(2) {
+	width: 80px;
+}
+.book-index:nth-child(3) {
+	width: 110px;
+}
+.book-index:nth-child(4) {
+	width: 100px;
+}
+.book-index:nth-child(5) {
+	width: 145px;
+}
+
+.book-index {
+	border-top: 1px solid #dddddd;
+}

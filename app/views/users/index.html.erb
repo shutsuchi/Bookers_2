@@ -1,0 +1,27 @@
+<body>
+	<div class="container">
+		<div class="row">
+			<%= render 'common' , user: current_user, book: @book %>
+			<div class="col-xs-9">
+				<h2>Users</h2>
+					<div>
+						<table>
+							<tr>
+								<th>Image</th>
+								<th>name</th>
+								<th></th>
+							</tr>
+							<% @users.each do |user| %>
+							<!-- < @users.each do |user| %> -->
+							<tr>
+								<td class="users-index"><%= attachment_image_tag user, :profile_image, fallback: "img/no_image.png", class:"field", size: "40x40" %></td>
+								<td class="users-index"><%= user.name %></td>
+								<td class="users-index"><%= link_to 'Show', user_path(user.id) %></td>
+							</tr>
+							<% end %>
+							<!-- < end %> -->
+						</table>
+					</div>
+			</div>
+		</div>
+</div>
