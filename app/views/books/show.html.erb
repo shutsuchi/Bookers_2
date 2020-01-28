@@ -8,11 +8,18 @@
 					<table>
 						<tbody>
 							<tr>
-								<td class="book-index"><%= attachment_image_tag @user, :profile_image, fallback: "img/no_image.png", class:"field", size: "40x40" %><br /><%= @book.user.name %></td>
+								<td class="book-index">
+									<%= attachment_image_tag @user, :profile_image, fallback: "img/no_image.png", class:"field", size: "40x40" %><br /><%= @book.user.name %>
+								</td>
 								<td class="book-index"><%= @book.title %></td>
 								<td class="book-index"><%= @book.body %></td>
-								<td class="book-index"><%= link_to "Edit", edit_book_path(@book.id), class:" btn-sm btn-success" %></td>
-								<td class="book-index"><%= link_to "Destroy", books_path, method: :delete, class:"btn-sm btn-danger" %></td>
+								<td class="book-index">
+								<% if @theuser.id == current_user.id %>
+										<%= link_to "Edit", edit_book_path(@book.id), class:" btn-sm btn-success" %>
+								</td>
+								<td class="book-index"><%= link_to "Destroy", books_path, method: :delete, class:"btn-sm btn-danger" %>
+								<% end %>
+								</td>
 							</tr>
 						</tbody>
 					</table>
