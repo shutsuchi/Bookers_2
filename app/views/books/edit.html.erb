@@ -1,7 +1,9 @@
 <div class="container">
 	<div class="row">
+      <%= render 'error_book', book: @book %>
       <h2>Editing Book</h2>
       <p></p>
+
       <%= form_for(@book) do |f| %>
           <div class="form-group has-icon row">
               <label class="field col-xs-12">Title</label><br />
@@ -10,7 +12,7 @@
 
           <div class="form-group has-icon row">
               <label class="field col-xs-12">Opinion</label><br />
-              <%= f.text_area :body, class:"col-xs-12" %>
+              <%= f.text_area :body, placeholder:"本の感想", class:"col-xs-12" %>
           </div>
 
           <div class="row">
@@ -19,11 +21,11 @@
       <% end %>
       <div>
       	<div class="row book-edit-select">
-					<div>
-		      	<%=link_to 'Show', user_path(current_user) %><span> | </span>
+	    	<div>
+		      	<%=link_to 'Show', book_path(@book.id) %><span> | </span>
 		      	<%=link_to 'Back', books_path %>
-		      </div>
-				</div>
+		     </div>
+		</div>  
     </div>
   </div>
 </div>

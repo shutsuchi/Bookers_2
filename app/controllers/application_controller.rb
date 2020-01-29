@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
 
 	before_action :configure_permitted_parameters, if: :devise_controller?
-	before_action :correct_user, only: [:edit, :update]
 
 	def after_sign_in_path_for(resource)
 		user_path(current_user.id)
@@ -11,14 +10,6 @@ class ApplicationController < ActionController::Base
 	end
 	def after_sign_out_path_for(resource)
 		root_path
-	end
-
-	def correct_user
-		@book = Book.find(params[:id])
-		@user = @book.user
-		if @user = current_user
-				redirect_to books_path
-		end
 	end
 
 	protected

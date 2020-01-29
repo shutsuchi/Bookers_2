@@ -166,3 +166,41 @@ td {
 .book-edit-select {
 	margin-top: 20px;
 }
+
+/*-------- ErrorHandling --------*/
+.error-box{
+	border: 2px solid #ff0000;
+	width: 300px;
+}
+.error-title{
+ 	color: #fff;
+ 	background-color: #cc0000;
+ 	padding: 10px;
+}
+
+.error-box-text{
+	font-size: 13px;
+	background-color: #eeeeee;
+	// padding: auto;
+}
+.error-text{
+	line-height: 1.5;
+	// margin-left: 10px;
+}
+.error-text:first-child{
+	padding-top: 15px;
+}
+.error-text:last-child{
+	padding-bottom: 15px;
+}
+
+.error-box-text
+li{
+	list-style-type: square;
+}
+
+.error-title-text{
+	background-color: #ff0000;
+	width: 35px;
+	font-size: 15px;
+}
