@@ -1,13 +1,15 @@
 class BooksController < ApplicationController
 
-	before_action :authenticate_user!
+  before_action :authenticate_user!
 
-	def show
-		@book = Book.find(params[:id])
-		@thebook = Book.new
-		@user = User.new
-		@theuser = @book.user
-	end
+  def show
+    @book = Book.find(params[:id])
+    @book_comment = BookComment.new
+    @book_comments = @book.book_comments.all
+    @thebook = Book.new
+    @user = User.new
+    @theuser = @book.user
+  end
 
 	def index
 		@books = Book.page(params[:page]).reverse_order
@@ -42,11 +44,11 @@ class BooksController < ApplicationController
 		end
 	end
 
-	def destroy
-		book = Book.find(params[:id])
-		book.destroy
-		redirect_to books_path
-	end
+  def destroy
+    book = Book.find(params[:id])
+    book.destroy
+    redirect_to books_path
+  end
 
 
 
