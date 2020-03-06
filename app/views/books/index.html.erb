@@ -1,28 +1,50 @@
 <body>
-	<div class="container">
-		<div class="row">
-			<%= render 'users/common' , user: current_user, book: @book %>
-			<div class="col-xs-9">
-				<h2>Books</h2>
-					<div>
-						<table>
-							<tr>
-								<th></th>
-								<th>Title</th>
-								<th>Opinion</th>
-								<th></th>
-							</tr>
-							<% @books.each do |book| %>
-							<tr>
-								<td class="books-index">
-									<%= link_to user_path(book.user) do %>
-									<%= attachment_image_tag book.user, :profile_image, fallback: "img/no_image.png", class:"field", size: "40x40" %>
-									<% end %>
-								</td>
-								<td class="books-index"><%= link_to book.title, book_path(book.id) %></td>
-								<td class="books-index"><%= book.body %></td>
-							</tr>
-							<% end %>
-							<%= paginate @books, class:"paginate"  %>
-						</table>
-					</div>
+  <div class="container">
+    <div class="row">
+    <%= render 'users/common' , user: current_user, book: @book %>
+      <div class="col-xs-9">
+        <h2>Books</h2>
+          <div>
+            <table>
+              <tr>
+                <th></th>
+                <th>Title</th>
+                <th>Opinion</th>
+                <th></th>
+              </tr>
+            <% @books.each do |book| %>
+              <tr>
+                <td class="books-index">
+                  <%= link_to user_path(book.user) do %>
+                    <%= attachment_image_tag book.user, :profile_image, fallback: "img/no_image.png", class:"field", size: "40x40" %>
+                  <% end %>
+                </td>
+                <td class="books-index"><%= link_to book.title, book_path(book.id) %></td>
+                <td class="books-index"><%= book.body %></td>
+                <td class="books-index">
+                  <% if book.favorited_by?(current_user) %>
+                    <%= link_to book_favorites_path(book), method: :delete do %>
+                      <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+                    <% end %>
+                  <% else %>
+                    <%= link_to book_favorites_path(book), method: :post do %>
+                      <i class="fa fa-heart-o" aria-hidden="true"></i>
+                    <% end %>
+                  <% end %>
+                  <% if book.favorites.nil? == true %>
+                    <span>0</span>
+                  <% else %>
+                    <span>
+                      <%= book.favorites.count %>
+                    </span>
+                  <% end %>
+                </td>
+              </tr>
+              <% end %>
+              <%= paginate @books, class:"paginate"  %>
+            </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
