@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+    <h5>You followed them</h5>
+    <table class="table bordered-table">
+      <thead>
+        <tr>
+          <th>Image</th>
+          <th>Name</th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+        <% @user.followings.each do |follow| %>
+          <tr>
+            <th><%= attachment_image_tag follow, :profile_image, fallback: "img/no_image.png", class:"field pic", size: "50x50" %></th>
+            <th><%= follow.name %></th>
+            <th>フォロー数：<%= follow.followings.count %></th>
+            <th>フォロワー数：<%= follow.followers.count %></th>
+            <th>
+              <%= form_for(current_user.active_relationships.find_by(follow_id: follow.id), html: { method: :delete }) do |f| %>
+              <%= hidden_field_tag :follow_id, follow.id %>
+              <%= f.submit 'Unfollow' %>
+              <% end %>
+            </th>
+            <th><%= link_to 'Show', user_path(follow) %></th>
+          </tr>
+        <% end %>
+      </thead>
+    </table>
+  </div>
+</div>

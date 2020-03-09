@@ -4,9 +4,12 @@ Rails.application.routes.draw do
 
 	root to: 'home#top'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :users, only: [:show, :index, :edit, :update]
+  resources :users, only: [:show, :index, :edit, :update] do
+    get :following, :followers
+  end
   resources :books, only: [:show, :index, :create, :edit, :update, :destroy] do
     resource :favorites, only: %i[ create destroy ]
     resource :book_comments, only: %i[ create destroy ]
   end
+  resources :relationships, only: %i[ create destroy ]
 end
