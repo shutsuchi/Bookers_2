@@ -1,7 +1,7 @@
 <body>
 	<div class="container">
 		<div class="row">
-			<%= render 'common', user: current_user, book: @book %>
+			<%= render 'common', user: @user, book: @book %>
 			<div class="col-xs-9">
 				<h2>Books</h2>
 					<div>
@@ -21,7 +21,7 @@
 								</td>
 								<td class="user-index"><%= link_to book.title, book_path(book.id) %></td>
 								<td class="user-index"><%= book.body %></td>
-								<td></td>
+                <td></td>
 							</tr>
 							<% end %>
 							<%= paginate @books, class:"paginate" %>

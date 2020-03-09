@@ -2,6 +2,20 @@ class UsersController < ApplicationController
 
   before_action :authenticate_user!
 
+  def following
+    @title = "Following"
+    @user = User.find(params[:user_id])
+    @users = @user.following.page(params[:page]).reverse_order
+    render 'followings'
+  end
+
+  def followers
+    @title = "Followers"
+    @user = User.find(params[:user_id])
+    @users = @user.followers.page(params[:page]).reverse_order
+    render 'followers'
+  end
+
   def index
   	@users = User.page(params[:page]).reverse_order
   	@book = Book.new
