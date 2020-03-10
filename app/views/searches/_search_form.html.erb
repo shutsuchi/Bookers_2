@@ -1,0 +1,25 @@
+<header class="">
+  <div class="container">
+    <ul class="nav navbar-nav navbar-center">
+      <% if user_signed_in? %>
+        <li class="search-nav">
+        <%= form_with(url: search_path, local: true, method: :get, class: "form4") do |form| %>
+          <%= form.text_field :search_word, placeholder: "search", class: "search-input" %>
+          <%#= form.text_field(@search_content, :search_word, placeholder: "投稿を検索する", class: "search-input") %>
+          <%= form.select :search_option, [["User", "user_search"], ["Book", "book_search"]] %>
+          <%#= form.select(@search_content, value: :search_option,
+                    ["User", "user_search"], ["Book", "book_search"]) %>
+          <%= form.select :search_method,
+                     [["前方一致", "forward_match"], ["後方一致", "backward_match"],
+                      ["完全一致", "perfect_match"], ["部分一致", "partial_match"]] %>
+          <%= form.submit "search", class: "glyphicon glyphicon-search btn-info" %>
+        <% end %>
+        </li>
+      <% else %>
+        <div></div>
+      <% end %>
+        <%#/li %>
+    </ul>
+  </div>
+  <hr/>
+</header>
