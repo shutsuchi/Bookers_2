@@ -14,6 +14,7 @@
                 <th class="active"></th>
               </tr>
               <%= render @books %>
+            <%# @books.each do |book| %>
               <%= paginate @books, class:"paginate"  %>
             </table>
         </div>

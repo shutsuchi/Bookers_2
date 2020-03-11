@@ -14,55 +14,16 @@
             <th class="active"></th>
           </thead>
           <tbody>
-            <tr>
-              <td class="book-index">
-                <%= link_to user_path(@theuser) do %>
-                  <%= attachment_image_tag @theuser, :profile_image, fallback: "img/no_image.png", class:"field", size: "40x40" %><br />
-                  <%= @theuser.name %>
-                <% end %>
-              </td>
-              <td class="book-index"><%= link_to(book_path(@book)) do %><%= @book.title %><% end %></td>
-              <td class="book-index"><%= @book.body %></td>
-              <td class="book-index">
-                <% if @book.favorited_by?(current_user) %>
-                  <%= link_to book_favorites_path(@book), method: :delete do %>
-                    <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
-                  <% end %>
-                <% else %>
-                  <%= link_to book_favorites_path(@book), method: :post do %>
-                    <i class="fa fa-heart-o" aria-hidden="true"></i>
-                  <% end %>
-                <% end %>
-                <% if @book.favorites.nil? == true %>
-                  <span>0</span>
-                <% else %>
-                  <span>
-                    <%= @book.favorites.count %>
-                  </span>
-                <% end %>
-              </td>
-              <td>
-                <div>コメント数：<%= @book.book_comments.count %></div>
-              </td>
-              <td class="book-index">
-                <% if @theuser == current_user %>
-                  <%= link_to "Edit", edit_book_path(@book.id), class:" btn-sm btn-success" %>
-                <% end %>
-              </td>
-              <td class="book-index">
-                <% if @theuser == current_user %>
-                  <%= link_to "Destroy", book_path(@book), method: :delete, class:"btn-sm btn-danger" %>
-                <% end %>
-              </td>
-            </tr>
+            <%= render @book %>
           </tbody>
         </table>
         <div class="row">
           <div class="col-sm-12">
-            <%= form_for [@book, @book_comment] do |f| %>
+            <%= form_for [@book, @the_book_comment] do |f| %>
+            <%#= form_with url: book_book_comments do |f| %>
               <%= f.text_area :comment, rows:'5', class:"form-control", placeholder:"comment here" %>
-              <div class="field">
-                <%= f.submit "投稿する", class:"btn btn-md btn-base-1 btn-default active pull-right" %>
+              <div class="field" id="book_comment_<%= @book_comment.id %>" >
+              <%= f.submit "投稿する", class:"btn btn-md btn-base-1 btn-default active pull-right" %>
               </div>
             <% end %>
           </div>
@@ -76,20 +37,12 @@
                   <th></th>
                   <th></th>
                 </thead>
-                <% @book_comments.each do |comment| %>
-                  <tbody>
-                    <tr class="panel panel-default">
-                      <td class="panel-body"><%= comment.user.name %></td>
-                      <td class="panel-body"><%= comment.comment %><td>
-                      <td class="panel-body"></td>
-                      <td class="panel-body">
-                        <% if comment.user == current_user %>
-                          <%= link_to 'delete', book_book_comments_path(@book), method: :delete, class:"btn btn-danger btn-sm" %>
-                        <% end %>
-                      </td>
-                    </tr>
-                  </tbody>
-                <% end %>
+              <%# book_comments.each do |comment| %>
+                <tbody>
+                  <tr class="panel panel-default">
+                  <%= render 'books/comment', comment: @book_comments %>
+                  </tr>
+                </tbody>
               </table>
             </div>
           </div>

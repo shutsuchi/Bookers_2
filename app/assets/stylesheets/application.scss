@@ -16,6 +16,7 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
  @import "searches";
+ @import "books";
 
 /*--------------- Common ---------------*/
 * {
@@ -35,7 +36,9 @@ div {
 	border-radius: 0px;
 }
 
-
+.table td{
+  word-break : break-all;
+}
 
 .nav {
 	list-style: none;
@@ -129,44 +132,6 @@ td {
 	width: 95px;
 }
 
-
-/*---------- Book_Index ---------------*/
-.books-index:nth-child(1) {
-	width: 65px;
-}
-.books-index:nth-child(2) {
-	width: 300px;
-}
-.books-index:nth-child(3) {
-	width: 310px;
-}
-
-/*---------- Book_Show ---------------*/
-.book-index:nth-child(1) {
-	width: 100px;
-}
-.book-index:nth-child(2) {
-	width: 80px;
-}
-.book-index:nth-child(3) {
-	width: 110px;
-}
-.book-index:nth-child(4) {
-	width: 100px;
-}
-.book-index:nth-child(5) {
-	width: 145px;
-}
-
-.book-index {
-	border-top: 1px solid #dddddd;
-}
-
-
-/*---------- Book_Edit ---------------*/
-.book-edit-select {
-	margin-top: 20px;
-}
 
 /*-------- ErrorHandling --------*/
 .error-box{
