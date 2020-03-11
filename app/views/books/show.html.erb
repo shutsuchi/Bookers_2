@@ -19,10 +19,10 @@
         </table>
         <div class="row">
           <div class="col-sm-12">
-            <%= form_for [@book, @the_book_comment] do |f| %>
+            <%= form_with(model: [@book, @the_book_comment], remote: true) do |f| %>
             <%#= form_with url: book_book_comments do |f| %>
               <%= f.text_area :comment, rows:'5', class:"form-control", placeholder:"comment here" %>
-              <div class="field" id="book_comment_<%= @book_comment.id %>" >
+              <div class="field">
               <%= f.submit "投稿する", class:"btn btn-md btn-base-1 btn-default active pull-right" %>
               </div>
             <% end %>
@@ -37,11 +37,9 @@
                   <th></th>
                   <th></th>
                 </thead>
-              <%# book_comments.each do |comment| %>
+                  <%# book_comments.each do |comment| %>
                 <tbody>
-                  <tr class="panel panel-default">
-                  <%= render 'books/comment', comment: @book_comments %>
-                  </tr>
+                  <%= render 'books/comment', comments: @book_comments, book: @book %>
                 </tbody>
               </table>
             </div>
