@@ -21,29 +21,15 @@
           <div class="col-sm-12">
             <%= form_with(model: [@book, @the_book_comment], remote: true) do |f| %>
             <%#= form_with url: book_book_comments do |f| %>
-              <%= f.text_area :comment, rows:'5', class:"form-control", placeholder:"comment here" %>
+              <%= f.label :comment %>
+              <%= f.text_area :comment, rows:'5', id:"comment_body", class:"form-control", placeholder:"comment here" %>
               <div class="field">
               <%= f.submit "投稿する", class:"btn btn-md btn-base-1 btn-default active pull-right" %>
               </div>
             <% end %>
           </div>
-          </div>
-          <div class="row">
-            <div class="col-sm-12">
-              <table class="table">
-                <thead class="panel-heading bg-success text-success">
-                  <th>Comments</th>
-                  <th></th>
-                  <th></th>
-                  <th></th>
-                </thead>
-                  <%# book_comments.each do |comment| %>
-                <tbody>
-                  <%= render 'books/comment', comments: @book_comments, book: @book %>
-                </tbody>
-              </table>
-            </div>
-          </div>
+        </div>
+        <%= render 'books/comment_area', comments: @book_comments, book: @book %>
       </div>
     </div>
   </div>

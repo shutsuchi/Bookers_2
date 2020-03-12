@@ -1,13 +1,9 @@
-<% comments.each do |comment| %>
-  <tr>
-    <td class="panel-body"><%= comment.user.name %></td>
-    <td class="panel-body"><%= comment.comment %><td>
-    <td class="panel-body"></td>
-    <td class="panel-body">
-      <% if comment.user == current_user %>
-        <%= link_to 'delete', book_book_comments_path(comment),
-            method: :delete, class:"btn btn-danger btn-sm" %>
-      <% end %>
-    </td>
-  </tr>
-<% end %>
+<div class="row">
+  <div class="col-xs-12">
+    <table id="js-table-comment" class="table">
+
+      <%= render 'books/comment', comments: comments, book: book %>
+
+    </table>
+  </div>
+</div>
