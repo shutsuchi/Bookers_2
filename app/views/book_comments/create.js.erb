@@ -1,0 +1,5 @@
+//$('#book_comment_<%#= @book_comment.id %>').html("<%#= j(render partial: 'books/comment') %>");
+// prepend
+$('#js-table-comment').html("<%= j(render 'books/comment',{ comments: @book_comment, book: @book }) %>");
+// val
+$('#comment_body').val('')

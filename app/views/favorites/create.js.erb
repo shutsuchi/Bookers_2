@@ -1,0 +1,2 @@
+// $('#books').html("<%#= j (render 'books/index') %>");
+$('#likes_buttons_<%= @book.id %>').html("<%= j(render partial: 'books/like', locals: {book: @book}) %>");

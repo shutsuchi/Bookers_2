@@ -1,3 +1,42 @@
 // Place all the styles related to the books controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/*---------- Book_Index ---------------*/
+
+.books-index:nth-child(1) {
+	width: 10px;
+}
+.books-index:nth-child(2) {
+	width: 300px;
+}
+.books-index:nth-child(3) {
+	width: 110px;
+}
+
+/*---------- Book_Show ---------------*/
+.book-index:nth-child(1) {
+	width: 100px;
+}
+.book-index:nth-child(2) {
+	width: 80px;
+}
+.book-index:nth-child(3) {
+	width: 110px;
+}
+.book-index:nth-child(4) {
+	width: 100px;
+}
+.book-index:nth-child(5) {
+	width: 145px;
+}
+.book-index {
+	border-top: 1px solid #dddddd;
+}
+
+
+/*---------- Book_Edit ---------------*/
+.book-edit-select {
+	margin-top: 20px;
+}
+
