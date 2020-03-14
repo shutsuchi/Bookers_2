@@ -59,4 +59,9 @@ class User < ApplicationRecord
     self.prefecture_code = JpPrefecture::Prefecture.find(name: prefecture_name).code
   end
 
+  def address_set
+    prefecture_name = JpPrefecture::Prefecture.find(self.prefecture_code).name
+    prefecture_name + self.city
+  end
+
 end

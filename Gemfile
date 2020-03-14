@@ -87,3 +87,6 @@ gem 'jp_prefecture'
 
 #### ENV-mng
 gem 'dotenv-rails'
+
+#### Google-map
+gem 'geocoder'

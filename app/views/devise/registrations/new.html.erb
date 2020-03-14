@@ -22,7 +22,7 @@
 
       <div class="field">
         <%= f.label :prefecture_code, "Prefecture" %><br>
-        <%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :name, :name, include_blank: true %>
+        <%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, include_blank: true %>
       </div>
 
       <div class="field">

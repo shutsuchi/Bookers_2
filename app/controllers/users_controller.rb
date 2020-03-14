@@ -25,6 +25,11 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @book = Book.new
     @books = Book.page(params[:page]).reverse_order
+    if @user == current_user
+      geo = Geocoder.coordinates(@user.address_set)
+      @lat = geo[0]
+      @lng = geo[1]
+    end
   end
 
   def edit
