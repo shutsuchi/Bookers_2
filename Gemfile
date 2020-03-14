@@ -81,3 +81,9 @@ gem "refile-mini_magick"
 #### Bootstrap
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'jquery-rails'
+
+#### auto-search prefecture
+gem 'jp_prefecture'
+
+#### ENV-mng
+gem 'dotenv-rails'
