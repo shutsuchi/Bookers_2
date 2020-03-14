@@ -22,12 +22,44 @@
 								<td class="user-index"><%= link_to book.title, book_path(book.id) %></td>
 								<td class="user-index"><%= book.body %></td>
                 <td></td>
-							</tr>
-							<% end %>
-							<%= paginate @books, class:"paginate" %>
-						</table>
-					</div>
-				</div>
-			</div>
-		</div>
+              </tr>
+              <% end %>
+              <%= paginate @books, class:"paginate" %>
+            </table>
+          </div>
+        </div>
+      </div>
+      <% if @user == current_user %>
+      <div class="row">
+        <div class="col-xs-12">
+          <h2>Your Map</h2>
+          <div id='map'></div>
+          <style>
+          #map{
+            height: 600px;
+          }
+          </style>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLEMAP_API_KEY"] %>&callback=initMap" async defer></script>
+          <script>
+          function initMap(){
+            var test ={lat: <%= @lat %>, lng: <%= @lng %>};
+            let map = new google.maps.Map(document.getElementById('map'), {
+              center: {lat: <%= @lat %>, lng: <%= @lng %>},
+              zoom: 12
+            });
+
+            var marker = new google.maps.Marker({
+              position: test,
+              map: map,
+            })
+
+            marker.setMap(map);
+
+          }
+          </script>
+        </div>
+      </div>
+      <% end %>
+    </div>
 </body>

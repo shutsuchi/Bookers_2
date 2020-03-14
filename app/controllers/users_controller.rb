@@ -17,14 +17,19 @@ class UsersController < ApplicationController
   end
 
   def index
-  	@users = User.page(params[:page]).reverse_order
-  	@book = Book.new
+    @users = User.page(params[:page]).reverse_order
+    @book = Book.new
   end
 
   def show
-  	@user = User.find(params[:id])
+    @user = User.find(params[:id])
     @book = Book.new
     @books = Book.page(params[:page]).reverse_order
+    if @user == current_user
+      geo = Geocoder.coordinates(@user.address_set)
+      @lat = geo[0]
+      @lng = geo[1]
+    end
   end
 
   def edit
@@ -35,17 +40,17 @@ class UsersController < ApplicationController
   end
 
   def update
-  	@user = User.find(params[:id])
-  	if @user.update(user_params)
-  	   redirect_to user_path(@user.id), notice: 'User successfully updated !'
-     else
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      redirect_to user_path(@user.id), notice: 'User successfully updated !'
+    else
        render :edit
     end
   end
 
   private
   def user_params
-  	params.require(:user).permit(:name, :introduction, :profile_image)
+    params.require(:user).permit(:name, :introduction, :profile_image, :postal_code, :prefecture, :city, :street)
   end
 
 end
