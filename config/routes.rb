@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   get 'home/about', to: 'home#about', as: 'home_about'
-  devise_for :users
+  devise_for :users, :controllers => {
+    :registrations => 'registrations'
+  }
 
   root to: 'home#top'
   get 'search', to: 'searches#search', as: 'search'
@@ -13,4 +15,8 @@ Rails.application.routes.draw do
     resource :book_comments, only: %i[ create destroy ]
   end
   resources :relationships, only: %i[ create destroy ]
+
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
 end
